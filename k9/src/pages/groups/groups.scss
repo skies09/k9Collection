@@ -1,0 +1,21 @@
+@import "../../global.scss";
+
+.group-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.group-item {
+  width: 20%; 
+  margin:2rem;
+}
+
+.group-button {
+  width:100%;
+  border: 1px solid #000; 
+  border-radius: 30px;
+  text-align: center;
+  font-size: 2rem;
+
+}
