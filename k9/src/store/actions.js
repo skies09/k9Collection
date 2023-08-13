@@ -45,7 +45,6 @@ export const getDogData = () => {
     dispatch(getDogDataRequest());
     axios.get('http://127.0.0.1:8000/dogs/') 
       .then((response) => {
-        console.log(response, 'response')
         dispatch(getDogDataSuccess(response.data));
       })
       .catch((error) => {
@@ -60,7 +59,6 @@ export const getGroups = () => {
     dispatch(getGroupsRequest());
     axios.get('http://127.0.0.1:8000/dogs/groups') 
       .then((response) => {
-        console.log(response, 'response')
         dispatch(getGroupsSuccess(response.data));
       })
       .catch((error) => {

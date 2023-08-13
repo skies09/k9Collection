@@ -1,28 +1,26 @@
-
-import Groups from "./pages/groups/Groups"
-import { getDogData } from "./store/actions";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route }
+from 'react-router-dom';
+import Home from "./pages/home/Home";
+import Group from './pages/group/Group';
+import Breed from './pages/breed/Breed';
 import "./app.scss";
 
-function App() {
-	return (
+const App = () => (
 		<div className="app">
-		<div className="heading">
-			<h1>K9 Collection</h1>
+			<div className="heading">
+				<h1>K9 Collection</h1>
 			</div>
-			<div>
-			<button
-				className="group-button"
-				onClick={() => {
-					console.log("dispatch all dogs");
-					getDogData();
-				}}
-			>
-				Show All Dogs
-			</button>
+			<Router>
+
+            <Routes>
+                <Route exact path='/' exact element={<Home />} />
+				<Route path='/group' element={<Group />} />
+				<Route path='/breed' element={<Breed />} />
+            </Routes>
+        </Router>
+	
 		</div>
-			<Groups/>
-		</div>
-	);
-}
+)
 
 export default App;

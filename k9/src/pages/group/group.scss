@@ -1,0 +1,26 @@
+@import "../../global.scss";
+
+.group-list ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.group-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 46%;
+	margin-top: 1rem;
+	margin-left: 2%;
+	margin-right: 2%;
+}
+
+.group-button {
+	width: 100%;
+	border: 1px solid #000;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 2rem;
+}

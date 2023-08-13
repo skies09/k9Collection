@@ -1,10 +1,21 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { getGroups } from "./../../store/actions";
+import { getDogData, getGroups } from "./../../store/actions";
 
-import "./groups.scss";
+import "./home.scss";
 
 const Groups = ({ data, loading, error, getGroups }) => {
+	const navigate = useNavigate();
+
+	const navigateToGroup = (group) => {
+		navigate("/group", {
+			state: {
+				group: group,
+			},
+		});
+	};
+
 	useEffect(() => {
 		getGroups();
 	}, [getGroups]);
@@ -17,6 +28,18 @@ const Groups = ({ data, loading, error, getGroups }) => {
 	}
 
 	return (
+		<>
+			<div className="button-container">
+				<button
+					className="all-dogs-button"
+					onClick={() => {
+						console.log("dispatch all dogs");
+						getDogData();
+					}}
+				>
+					Show All Dogs
+				</button>
+			</div>
 			<div className="group-list">
 				{data && (
 					<ul>
@@ -26,10 +49,7 @@ const Groups = ({ data, loading, error, getGroups }) => {
 								<button
 									className="group-button"
 									onClick={() => {
-										console.log(
-											"dispatch the group breeds",
-											group
-										);
+										navigateToGroup(group);
 									}}
 								>
 									{group}{" "}
@@ -39,6 +59,7 @@ const Groups = ({ data, loading, error, getGroups }) => {
 					</ul>
 				)}{" "}
 			</div>
+		</>
 	);
 };
 
