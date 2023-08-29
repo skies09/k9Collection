@@ -7,6 +7,9 @@ export const FETCH_DOG_DATA_FAILURE = 'FETCH_DOG_DATA_FAILURE';
 export const FETCH_GROUPS = 'FETCH_GROUPS';
 export const FETCH_GROUPS_SUCCESS = 'FETCH_GROUPS_SUCCESS';
 export const FETCH_GROUPS_FAILURE = 'FETCH_GROUPS_FAILURE';
+export const FETCH_BREEDS = 'FETCH_BREEDS';
+export const FETCH_BREEDS_SUCCESS = 'FETCH_BREEDS_SUCCESS';
+export const FETCH_BREEDS_FAILURE = 'FETCH_BREEDS_FAILURE';
 
 // Dog action creators
 const getDogDataRequest = () => ({
@@ -23,7 +26,6 @@ const getDogDataFailure = (error) => ({
   payload: error,
 });
 
-// Dog action creators
 const getGroupsRequest = () => ({
   type: FETCH_GROUPS,
 });
@@ -35,6 +37,20 @@ const getGroupsSuccess = (data) => ({
 
 const getGroupsFailure = (error) => ({
   type: FETCH_GROUPS_FAILURE,
+  payload: error,
+});
+
+const getBreedsRequest = () => ({
+  type: FETCH_BREEDS,
+});
+
+const getBreedsSuccess = (data) => ({
+  type: FETCH_BREEDS_SUCCESS,
+  payload: data,
+});
+
+const getBreedsFailure = (error) => ({
+  type: FETCH_BREEDS_FAILURE,
   payload: error,
 });
 
@@ -63,6 +79,21 @@ export const getGroups = () => {
       })
       .catch((error) => {
         dispatch(getGroupsFailure(error.message));
+      });
+  };
+};
+
+// Get dog breeds of group action
+export const getBreeds = (group) => {
+  return (dispatch) => {
+    dispatch(getBreedsRequest());
+    axios.get(`http://127.0.0.1:8000/dogs/${group}/`) 
+      .then((response) => {
+        dispatch(getBreedsSuccess(response.data));
+      })
+      .catch((error) => {
+        dispatch(getBreedsFailure(error.message));
+
       });
   };
 };

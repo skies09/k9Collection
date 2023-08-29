@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { getDogData, getGroups } from "./../../store/actions";
 
 import "./home.scss";
 
-const Groups = ({ data, loading, error, getGroups }) => {
+const Home = ({ data, loading, error, getGroups }) => {
 	const navigate = useNavigate();
-
+	const [isDataLoaded, setIsDataLoaded] = useState(false);
 	const navigateToGroup = (group) => {
-		navigate("/group", {
+		navigate(`/dogs/${group}`, {
 			state: {
 				group: group,
 			},
@@ -19,6 +19,12 @@ const Groups = ({ data, loading, error, getGroups }) => {
 	useEffect(() => {
 		getGroups();
 	}, [getGroups]);
+
+	useEffect(() => {
+		if (data) {
+			setIsDataLoaded(typeof data[0] === "string" ? true : false);
+		}
+	}, [data]);
 
 	if (loading) {
 		return <div> Loading... </div>;
@@ -41,7 +47,7 @@ const Groups = ({ data, loading, error, getGroups }) => {
 				</button>
 			</div>
 			<div className="group-list">
-				{data && (
+				{isDataLoaded && (
 					<ul>
 						{" "}
 						{data.map((group, index) => (
@@ -71,4 +77,4 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
 	getGroups,
-})(Groups);
+})(Home);
