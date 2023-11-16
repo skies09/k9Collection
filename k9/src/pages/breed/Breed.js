@@ -1,12 +1,13 @@
 import React from "react";
-
+import {  useSelector } from "react-redux";
+import Banner from "./../../components/banner/Banner";
 
 const Breed = () => {
+	const selectedBreed = useSelector((state) => state.selectedBreed);
+
 
 	return (
-		<div>
-			<h1>Single breed</h1>
-		</div>
+		<Banner text={selectedBreed} />
 	);
 };
 

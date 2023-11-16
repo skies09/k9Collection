@@ -1,0 +1,24 @@
+@import "../../global.scss";
+
+.heading {
+	// background-image: url("../../images/dogbanner3.jpg");
+	// background-repeat: no-repeat;
+	background-color: #274c26;
+	height: 8rem;
+	width: 100%;
+
+	@include mobile {
+		height: 4rem;
+	}
+}
+
+.heading-title {
+	text-align: center;
+	font-size: 5rem;
+	text-shadow: 2px 2px 4px black;
+	color: white;
+
+	@include mobile {
+		font-size: 3rem;
+	}
+}

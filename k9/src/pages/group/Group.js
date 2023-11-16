@@ -1,47 +1,66 @@
-import React, { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { connect } from "react-redux";
-import { getBreeds } from "./../../store/actions";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedBreed } from "../../store/actions";
+import Banner from "./../../components/banner/Banner";
 
-const Group = ({ data, loading, error, getBreeds }) => {
-	const location = useLocation();
+const Group = () => {
 	const navigate = useNavigate();
-	let group = location.state.group;
-	// add a back button
-	useEffect(() => {
-		getBreeds(group);
-	}, [getBreeds]);
+	const dispatch = useDispatch();
+	const selectedGroup = useSelector((state) => state.selectedGroup);
 
-	if (loading) {
-		return <div> Loading... </div>;
-	}
-	if (error) {
-		return <div> Error: {error} </div>;
-	}
+	const [breeds, setBreeds] = useState([]);
+
+	useEffect(() => {
+		// Get the dog breeds
+		const fetchData = async () => {
+			try {
+				const response = await fetch(
+					`http://127.0.0.1:8000/dogs/${selectedGroup}/` //need to update this call
+				);
+				const breedData = await response.json();
+				setBreeds(breedData);
+			} catch (error) {
+				console.error("Error fetching groups:", error.message);
+			}
+		};
+
+		fetchData();
+	}, [selectedGroup]);
+
+	const navigateToBreed = (breed) => {
+		navigate(`/${breed}`);
+	};
+
+	const handleBreedSelect = (selectedBreed) => {
+		dispatch(setSelectedBreed(selectedBreed));
+		navigateToBreed(selectedBreed);
+	};
 
 	return (
 		<div>
-		<button
-		className="group-button"
-		onClick={() => {
-			navigate('/')
-			console.log("navigate Back");
-		}}
-	>
-		Back
-	</button>
-			<h1>{group}</h1>
+			<Banner text={selectedGroup} />
+
+			<button
+				className="group-button"
+				onClick={() => {
+					navigate("/");
+					console.log("navigate Back");
+				}}
+			>
+				Back
+			</button>
 			<div className="group-list">
-				{data && (
+				{breeds.length > 0 && (
 					<ul>
 						{" "}
-						{data.map(({ breed }) => (
+						{breeds.map(({ breed }) => (
 							<li className="group-item">
 								<button
 									className="group-button"
 									onClick={() => {
-										// navigateToGroup(group);
 										console.log("navigate to breed");
+										handleBreedSelect(breed);
 									}}
 								>
 									{breed}{" "}
@@ -55,12 +74,4 @@ const Group = ({ data, loading, error, getBreeds }) => {
 	);
 };
 
-const mapStateToProps = (state) => ({
-	data: state.reducer.data,
-	loading: state.reducer.loading,
-	error: state.reducer.error,
-});
-
-export default connect(mapStateToProps, {
-	getBreeds,
-})(Group);
+export default Group;

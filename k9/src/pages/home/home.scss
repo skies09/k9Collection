@@ -19,7 +19,7 @@
 .group-list ul {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 }
 
@@ -27,16 +27,19 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 46%;
+	width: auto;
 	margin-top: 1rem;
 	margin-left: 2%;
 	margin-right: 2%;
 }
 
 .group-button {
-	width: 100%;
+	width: 12rem;
 	border: 1px solid #000;
 	border-radius: 30px;
+	padding-inline: 20px;
 	text-align: center;
 	font-size: 2rem;
+	padding-top: 0.5rem;
+	padding-bottom:0.5rem;
 }
