@@ -16,8 +16,8 @@ class Dog(models.Model):
     size = models.CharField(max_length=5, choices=SIZES)
     lifespan = models.IntegerField()
     exercise_needs = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
-    grooming_needs = models.IntegerField()
-    intelligence = models.IntegerField()
+    grooming_needs = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
+    intelligence = models.IntegerField(validators=[MaxValueValidator(5), MinValueValidator(1)])
 
 class Meta:
     ordering = ('-group',)

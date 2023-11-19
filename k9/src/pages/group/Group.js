@@ -53,7 +53,6 @@ const Group = () => {
 								<button
 									className="breed-button"
 									onClick={() => {
-										console.log("navigate to breed");
 										handleBreedSelect(breed);
 									}}
 								>

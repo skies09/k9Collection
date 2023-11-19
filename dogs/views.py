@@ -14,7 +14,7 @@ def dogs_list(request):
 # Get the groups available
 @api_view(['GET'])
 def dog_groups(request):
-    groups =  Dog.objects.values_list('group', flat=True).distinct()
+    groups =  Dog.objects.values_list('group', flat=True).distinct().order_by('group')
     return Response(groups)
 
 # Get the breeds available for group
@@ -29,4 +29,17 @@ def dog_breeds(request, group):
             # Add more fields as needed
         })
 
-    return Response(serialized_dogs)
+    dog_breeds = sorted(serialized_dogs, key=lambda x: x['breed'])
+
+    return Response(dog_breeds)
+
+# Get single breed view
+@api_view(['GET'])
+def dog_detail(request, breed):
+    print('hey')
+    try:
+        dog = Dog.objects.get(breed=breed)
+        serializer = DogSerializer(dog)
+        return Response(serializer.data)
+    except Dog.DoesNotExist:
+        return Response({'error': 'Dog breed not found'}, status=404)
