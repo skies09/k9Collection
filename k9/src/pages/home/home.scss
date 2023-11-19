@@ -1,19 +1,19 @@
 @import "../../global.scss";
 
-.button-container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width:100%;
-  margin-top:2rem;
+.button-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 2rem;
 }
 
-.all-dogs-button{
-  width:46%;
-  border: 1px solid #000; 
-  border-radius: 30px;
-  text-align: center;
-  font-size: 1.5rem;
+.all-dogs-button {
+	width: 46%;
+	border: 1px solid $forestColorFive;
+	border-radius: 30px;
+	text-align: center;
+	font-size: 1.5rem;
 }
 
 .group-list ul {
@@ -21,25 +21,36 @@
 	flex-wrap: wrap;
 	justify-content: space-around;
 	align-items: center;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2.5rem;
 }
 
 .group-item {
+	background-color: $forestColorOne;
+	margin: 1.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: auto;
-	margin-top: 1rem;
-	margin-left: 2%;
-	margin-right: 2%;
+	border-radius: 10px;
+	&:hover {
+		background-color: $forestColorFour;
+		transform: scale(1.15);
+	}
 }
 
 .group-button {
-	width: 12rem;
-	border: 1px solid #000;
-	border-radius: 30px;
-	padding-inline: 20px;
-	text-align: center;
+	border: none;
+	font-family: "Montserrat", sans-serif;
 	font-size: 2rem;
-	padding-top: 0.5rem;
-	padding-bottom:0.5rem;
+	color: $forestColorFour;
+	text-decoration: underline;
+	background-color: $forestColorTwo;
+	width: 14rem;
+	height: 10rem;
+	&:hover {
+		background-color: $forestColorFour;
+		color: $forestColorTwo;
+	}
 }

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedBreed } from "../../store/actions";
 import Banner from "./../../components/banner/Banner";
+import Button from "../../components/button/Button";
 
 const Group = () => {
 	const navigate = useNavigate();
@@ -40,16 +41,8 @@ const Group = () => {
 	return (
 		<div>
 			<Banner text={selectedGroup} />
+			<Button buttonText={'Back'} buttonNavigation={'/'} />
 
-			<button
-				className="group-button"
-				onClick={() => {
-					navigate("/");
-					console.log("navigate Back");
-				}}
-			>
-				Back
-			</button>
 			<div className="group-list">
 				{breeds.length > 0 && (
 					<ul>

@@ -1,9 +1,14 @@
+@import "../../global.scss";
+
 .banner {
-    background-color: grey;
-    height:5rem;
+    background-color: $forestColorFour;
+    height:5.5rem;
 }
 
 h1{
     text-align: center;
-    font-size: 3rem;
+    align-items: center;
+    font-size: 3.5rem;
+    font-family: 'Merienda', cursive;
+	color: $forestColorFive;
 }

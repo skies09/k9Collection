@@ -17,10 +17,18 @@
 	margin-right: 2%;
 }
 
-.group-button {
-	width: 100%;
-	border: 1px solid #000;
-	border-radius: 30px;
-	text-align: center;
+
+
+.back-button {
+	border: none;
+	font-family: "Montserrat", sans-serif;
 	font-size: 2rem;
+	color: $forestColorFive;
+	text-decoration: underline;
+	background-color: $forestColorOne;
+	width: 14rem;
+	height: 10rem;
+	&:hover {
+		background-color: $forestColorFour;
+	}
 }

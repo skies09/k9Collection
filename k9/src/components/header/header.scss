@@ -3,7 +3,7 @@
 .heading {
 	// background-image: url("../../images/dogbanner3.jpg");
 	// background-repeat: no-repeat;
-	background-color: #274c26;
+	background-color: $forestColorTwo;
 	height: 8rem;
 	width: 100%;
 
@@ -13,10 +13,11 @@
 }
 
 .heading-title {
+	font-family: 'Merienda', cursive;
 	text-align: center;
 	font-size: 5rem;
-	text-shadow: 2px 2px 4px black;
-	color: white;
+	text-shadow: 2px 2px 4px $forestColorFive;
+	color: $forestColorFour;
 
 	@include mobile {
 		font-size: 3rem;

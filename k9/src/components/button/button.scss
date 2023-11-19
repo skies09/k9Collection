@@ -1,0 +1,16 @@
+@import "../../global.scss";
+
+
+.button {
+	border: none;
+	font-family: "Montserrat", sans-serif;
+	font-size: 1rem;
+	color: $forestColorFour;
+	background-color: $forestColorTwo;
+	width: 4rem;
+	height: 2rem;
+    margin:0.5rem;
+	&:hover {
+		background-color: $forestColorOne;
+	}
+}

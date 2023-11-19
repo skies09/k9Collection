@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSelectedGroup } from "../../store/actions";
-
+import Banner from "./../../components/banner/Banner";
 import "./home.scss";
 
 const Home = () => {
@@ -28,13 +28,7 @@ const Home = () => {
 	}, []);
 
 	const navigateToGroup = (group) => {
-		navigate(`/dogs/${group}`,
-		//  {
-		// 	state: {
-		// 		group: group,
-		// 	},
-		// }
-		);
+		navigate(`/dogs/${group}`);
 	};
 
 	const handleGroupSelect = (selectedGroup) => {
@@ -43,6 +37,7 @@ const Home = () => {
 	};
 	return (
 		<>
+			<Banner text={"Breed Groups"} />
 			{/*
 			<div className="button-container">
 				<button
@@ -67,7 +62,7 @@ const Home = () => {
 										handleGroupSelect(group);
 									}}
 								>
-									{group}{" "}
+									{group}
 								</button>
 							</li>
 						))}{" "}
