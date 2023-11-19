@@ -1,34 +1,41 @@
 @import "../../global.scss";
 
-.group-list ul {
+.breed-list ul {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2.5rem;
 }
 
-.group-item {
+.breed-item {
+	background-color: $forestColorOne;
+	margin: 1.5rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 46%;
-	margin-top: 1rem;
-	margin-left: 2%;
-	margin-right: 2%;
+	border-radius: 10px;
+	&:hover {
+		background-color: $forestColorFour;
+		transform: scale(1.15);
+	}
 }
 
-
-
-.back-button {
+.breed-button {
 	border: none;
 	font-family: "Montserrat", sans-serif;
 	font-size: 2rem;
-	color: $forestColorFive;
-	text-decoration: underline;
-	background-color: $forestColorOne;
+	color: $forestColorFour;
+	background-color: $forestColorTwo;
 	width: 14rem;
 	height: 10rem;
 	&:hover {
 		background-color: $forestColorFour;
+		color: $forestColorTwo;
 	}
 }
+
+

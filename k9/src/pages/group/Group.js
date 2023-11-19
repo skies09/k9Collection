@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSelectedBreed } from "../../store/actions";
 import Banner from "./../../components/banner/Banner";
 import Button from "../../components/button/Button";
+import "./group.scss";
 
 const Group = () => {
 	const navigate = useNavigate();
@@ -43,14 +44,14 @@ const Group = () => {
 			<Banner text={selectedGroup} />
 			<Button buttonText={'Back'} buttonNavigation={'/'} />
 
-			<div className="group-list">
+			<div className="breed-list">
 				{breeds.length > 0 && (
 					<ul>
 						{" "}
 						{breeds.map(({ breed }) => (
-							<li className="group-item">
+							<li className="breed-item">
 								<button
-									className="group-button"
+									className="breed-button"
 									onClick={() => {
 										console.log("navigate to breed");
 										handleBreedSelect(breed);
